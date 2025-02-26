@@ -35,10 +35,12 @@ onMounted(() => {
   <h1>Board List</h1>
   <button @click="$router.push({ name: 'board_write' })">글쓰기</button>
     <!-- boards 배열을 v-for로 반복하여 각 게시글을 출력 -->
-    <div v-for="board in boards" :key="board.idx" class="board" @click="goToBoardDetail(board.idx)">
+    <div v-for="(board, index) in boards" :key="board.idx" class="board" @click="goToBoardDetail(board.idx)">
+      <h2>게시글 번호 {{ index + 1 }}</h2>
       <h2>{{ board.title }}</h2>
       <p>{{ board.content }}</p>
       <p><strong>Writer:</strong> {{ board.writer }}</p>
+      <p><strong>댓글 수:</strong> {{ board.comments.length }}</p>
   
       
     </div>
