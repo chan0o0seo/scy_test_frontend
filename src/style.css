@@ -1,5 +1,11 @@
+@font-face {
+  font-family: 'baemin'; /* 폰트 이름 */
+  src: url('./assets/fonts/BMJUA_ttf.ttf') format('truetype'); /* TTF 파일 경로 */
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: baemin,Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
