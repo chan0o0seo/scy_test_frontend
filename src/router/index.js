@@ -1,5 +1,8 @@
 import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
 import Main from '../components/Main.vue'
+import BoardList from '../components/BoardList.vue'
+import BoardWrite from '../components/BoardWrite.vue'
+import BoardDetail from '../components/BoardDetail.vue'
 
 const routes = createRouter({
   history: createWebHistory(), //createWebHistory(), -> for browser history
@@ -7,9 +10,12 @@ const routes = createRouter({
     {
       path: '/',
       component: Main,
-      name: 'main'
+      children: [
+        {path: '', component: BoardList, name: 'board_list'},
+        {path: 'write', component: BoardWrite, name: 'board_write'},
+        { path: '/board/:idx', name: 'board_detail', component: BoardDetail, props: true },
+      ]
     }
-
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
