@@ -32,19 +32,48 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Board List</h1>
-  <button @click="$router.push({ name: 'board_write' })">글쓰기</button>
-    <!-- boards 배열을 v-for로 반복하여 각 게시글을 출력 -->
-    <div v-for="(board, index) in boards" :key="board.idx" class="board" @click="goToBoardDetail(board.idx)">
-      <h2>게시글 번호 {{ index + 1 }}</h2>
-      <h2>{{ board.title }}</h2>
-      <p>{{ board.content }}</p>
-      <p><strong>Writer:</strong> {{ board.writer }}</p>
-      <p><strong>댓글 수:</strong> {{ board.comments.length }}</p>
-  
-      
-    </div>
-  </template>
+  <v-container class="container">
+    <!-- 상단 글쓰기 버튼 -->
+    <v-row justify="end">
+      <v-col cols="auto">
+        <v-btn color="primary" @click="$router.push({ name: 'board_write' })">
+          글쓰기
+        </v-btn>
+      </v-col>
+    </v-row>
+
+    <!-- 게시글 목록 -->
+    <v-row>
+      <v-col v-for="(board, index) in boards" :key="board.idx" cols="12" md="6" lg="4">
+        <v-card class="mx-auto" @click="goToBoardDetail(board.idx)" elevation="2">
+          <v-card-subtitle class="text-h6">
+            게시글 번호 {{ index + 1 }}
+          </v-card-subtitle>
+          <v-card-title class="text-h5">제목: {{ board.title }}</v-card-title>
+          <v-card-text>
+            <p><strong>작성자:</strong> {{ board.writer }}</p>
+            <p><strong>댓글 수:</strong> {{ board.comments.length }}</p>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script setup>
+</script>
 
 <style scoped>
+/* 카드에 호버 효과 추가 */
+.v-card {
+  transition: transform 0.2s ease-in-out;
+}
+.v-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.container {
+  min-width: 1000px;
+}
 </style>
+
