@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { RouterView } from 'vue-router';
 import api from '../api'; 
 import { useRouter } from 'vue-router';
+import Header from './Header.vue';
 
 const router = useRouter();
 
@@ -19,9 +20,17 @@ const list = async () => {
 </script>
 
 <template>
-  <!-- 클릭 이벤트에서 메서드 호출 시 () 없이 메서드 이름만 사용 -->
-  <RouterView />
+  <v-app>
+
+    <Header />
+    <div class="container">
+      <RouterView />
+    </div>
+  </v-app>
 </template>
 
 <style scoped>
+.container {
+  margin-top: 200px;
+}
 </style>
