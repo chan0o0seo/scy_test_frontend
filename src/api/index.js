@@ -24,4 +24,27 @@ const getList = async () => {
       return null;
     }
   };
-export default {getList, write};
+  const getBoardDetail = async (boardIdx) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/board/${boardIdx}`);
+      return response.data; 
+    } catch (error) {
+      console.error('게시글 조회 실패:', error);
+      return null;
+    }
+  };
+
+  const writeComment = async (board_idx,writer,content) => {
+    console.log("write 호출");
+    try {
+      const response = await axios.post(`http://localhost:8080/comment/write`,{
+        board_idx,
+        writer,
+        content
+      });
+      return response.data; 
+    } catch (error) {
+      return null;
+    }
+  };
+export default {getList, write, getBoardDetail,writeComment};

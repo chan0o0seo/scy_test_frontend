@@ -28,7 +28,7 @@ const submit = async () => {
         v-model="writer"
         label="작성자"
       ></v-text-field>
-      <v-textarea v-model="content" label="내용" variant="outlined"></v-textarea>
+      <v-textarea v-model="content" label="내용" variant="outlined" @keyup.enter="submit" ></v-textarea>
       <v-btn class="mt-2" type="submit" block>제출</v-btn>
     </v-form>
   </v-sheet>
